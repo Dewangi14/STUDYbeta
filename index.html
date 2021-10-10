@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Task Management Project</title>
+
+        <link rel="stylesheet" href="./style.css">
+        <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF"
+        crossorigin="anonymous"
+        />
+        <link
+        rel="stylesheet"
+        href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+        crossorigin="anonymous"
+        />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Birthstone&display=swap" rel="stylesheet">
+  </head>
+
+    <body onload="reloadTaskCard()" style="background-color: rgb(12, 12, 94); background-image: url(./assets/bg.jpg);">
+
+        <!-- Modal -->
+
+        <div class="modal fade" id="newCardModal" tabindex="-1" aria-labelledby="newCardModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add New Subject</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="Subject" class="form-label">Subject</label>
+                            <input type="text" class="form-control" id="Subject"/>
+                        </div>
+                        <div class="mb-3">
+                            <label for="TopicsCovered" class="form-label">Topics Covered: </label>
+                            <input type="text" class="form-control" id="TopicsCovered"/>
+                            <!-- <taskarea rows="3" class="form-control" id="TopicsCovered"></taskarea> -->
+                        </div>
+                        <div class="mb-3">
+                            <label for="Duration" class="form-label">Duration: </label>
+                            <input type="text" class="form-control" id="Duration"/>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Tests" class="form-label">Tests: </label>
+                            <input type="number" class="form-control" id="Tests"/>
+                        </div>
+                        <div class="mb-3">
+                            <label for="date" class="form-label">Date: </label>
+                            <input type="date" class="form-control" id="date"/>
+                        </div>
+                        
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal" onclick="addCard()">
+                            SAVE DETAILS
+                        </button>
+                    </div>
+                </div>
+                
+            </div>
+        </div> 
+        
+
+        <!-- Navbar -->
+
+        <nav class="navbar navbar-expand-md navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">STUDYbeta</a>
+                <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+                >
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#"
+                        ><strong>Home</strong></a
+                    >
+                    </li>
+                </ul>
+                <button
+                    class="btn btn-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#newCardModal"
+                >
+                    <i class="fas fa-plus"></i>Add New
+                </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- carousel -->
+
+        <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel" style="align-items: center;">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner" style="height: 600px; width: 90%; margin-top: 10px; margin-left: 5%;">
+                <div class="carousel-item active" data-bs-interval="10000" style="height: 100%; width: 100%;">
+                        <img src="./assets/img1.jpg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                        <!-- <h5>First slide label</h5>
+                        <p>Some representative placeholder content for the first slide.</p> -->
+                </div>
+            </div>
+                <div class="carousel-item" data-bs-interval="2000" style="height: 100%; width: 100%;">
+                        <img src="./assets/img2.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <!-- <h5>Second slide label</h5>
+                        <p>Some representative placeholder content for the second slide.</p> -->
+                    </div>
+              </div>
+            <div class="carousel-item" style="height: 100%; width: 100%;">
+                <img src="./assets/img3.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <!-- <h5>Third slide label</h5>
+                    <p>Some representative placeholder content for the third slide.</p> -->
+                </div>
+            </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+
+        <!-- Text -->
+        <center>
+
+            <div  style="background-color: rgb(192, 190, 190); width: 60%; padding-top: 5%; padding-bottom: 5%; margin: 40px; border-radius: 30px; border: 5px white dashed;" >
+                <p >
+                    <h1>STUDYbeta</h1><h1 style="color:black; font-family: 'Birthstone', cursive;"> is all you need for your transition journey.</h1>
+                    <h2 style="color:aliceblue; font-family: 'Birthstone', cursive;">Track your Hardwork.</h2>
+        
+                </p>
+                
+            </div>
+
+        </center>
+        
+
+
+        <!-- Cards -->
+
+        <main class="container">
+            <section style="margin-bottom: 10%; margin-left: 5%;" class="sect">
+                <div id="subjectContentsRow" class="row"> 
+                    <!-- <div class="col-md-6 col-lg-4 mt-3" id=${id} keys=${id}>
+                        <div class="card" style="width: 18rem">
+                            <div class="card-header" style="padding: 20%; text-align: center; background-color: rgb(30, 224, 224);">
+                                Subject
+                                <div>
+                                    <span class="badge bg-info text-dark float-md-end"
+                                        ><i class="far fa-calendar-alt"></i> Date</span
+                                    >
+                                </div>
+                            </div>
+            
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                <i class="fa fa-book" aria-hidden="true"></i> Topics Covered
+                                </li>
+                                <li class="list-group-item">
+                                <i class="fas fa-clock"></i> Duration
+                                </li>
+                                <li class="list-group-item">
+                                <i class="fas fa-pen-alt"></i> Tests
+                                </li>
+                            </ul>
+            
+                            <div class="card-footer">
+                                <div class="d-flex justify-content-end">
+                                    <button type="button" class="btn btn-outline-primary">OPEN</button>
+
+                                    <button type="button" class="btn btn btn-outline-info">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </button>
+                                    <button type="button" class="btn btn btn-outline-danger">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+
+                    
+
+                </div>
+            </section>
+        </main>
+
+        <script src="index.js"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+            integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.min.js"
+            integrity="sha384-PsUw7Xwds7x08Ew3exXhqzbhuEYmA2xnwc8BuD6SEr+UmEHlX8/MCltYEodzWA4u"
+            crossorigin="anonymous"
+            ></script>
+    </body>
+</html>
