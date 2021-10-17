@@ -25,10 +25,10 @@ const generateSubjectCard = ({id, subject, topics, duration, tests, date}) =>  {
         
         `<div class="col-md-6 col-lg-4 mt-3" id=${id} keys=${id}>
             <div class="card" style="width: 18rem">
-                <div class="card-header" style="padding: 20%; text-align: center; background-color: rgb(30, 224, 224);"><strong><p style="font-size:25px;">
+                <div class="card-header" style="padding: 20%; text-align: center; background-color: rgb(30, 224, 224); background-image: url(./assets/bg4.jpg)"><strong><p style="font-size:25px;">
                     ${subject}</strong></p>
                     <div>
-                        <span class="badge bg-info text-dark float-md-end"
+                        <span class="badge bg-light text-dark float-md-end" 
                             ><i class="far fa-calendar-alt"></i> <strong>Date:</strong> ${date}</span
                         >
                     </div>
@@ -49,9 +49,9 @@ const generateSubjectCard = ({id, subject, topics, duration, tests, date}) =>  {
                 <div class="card-footer">
                     <div class="d-flex justify-content-end">
 
-                        <button type="button" class="btn btn-outline-primary">OPEN</button>
+                        <button type="button" class="btn btn-outline-dark">OPEN</button>
 
-                        <button type="button" class="btn btn btn-outline-info" onclick="editSubject(this)" name=${id}>
+                        <button type="button" class="btn btn btn-outline-dark" onclick="editSubject(this)" name=${id}>
                             <i class="fas fa-pencil-alt"></i>
                         </button>
                         <button type="button" class="btn btn btn-outline-danger" onclick="deleteSubject(this)" name=${id}>
